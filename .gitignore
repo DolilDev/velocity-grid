@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Compiled CSS (css/style.css) is committed on purpose: this is a no-bundler
+# static site, so the generated stylesheet must ship for the live demo to work.
+# Only the source map is transient and ignored.
+css/style.css.map
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.log
+.cache/

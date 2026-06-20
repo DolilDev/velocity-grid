@@ -1,0 +1,21 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+)?$",
+      {
+        "message": "Expected class selector to follow BEM (block__element--modifier)"
+      }
+    ],
+    "max-nesting-depth": [
+      3,
+      {
+        "ignore": ["pseudo-classes"]
+      }
+    ],
+    "scss/dollar-variable-pattern": "^[a-z][a-z0-9-]*$",
+    "scss/at-mixin-pattern": "^[a-z][a-z0-9-]*$",
+    "scss/double-slash-comment-empty-line-before": null,
+    "no-descending-specificity": null
+  }
+}

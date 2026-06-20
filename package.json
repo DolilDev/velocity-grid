@@ -1,0 +1,32 @@
+{
+  "name": "apex-racing-series",
+  "version": "1.0.0",
+  "description": "Static portfolio site for the fictional APEX Racing Series — F1-style concept cars built with semantic HTML, a 7-1 SCSS architecture and vanilla ES modules.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scss": "sass scss/main.scss css/style.css --style=compressed --no-source-map",
+    "watch": "sass --watch scss/main.scss css/style.css",
+    "lint:scss": "stylelint \"scss/**/*.scss\"",
+    "lint:js": "eslint js",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "portfolio",
+    "scss",
+    "7-1-architecture",
+    "vanilla-js",
+    "accessibility"
+  ],
+  "author": "DolilDev",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.39.4",
+    "globals": "^15.15.0",
+    "prettier": "^3.8.4",
+    "sass": "^1.101.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard-scss": "^13.1.0"
+  }
+}

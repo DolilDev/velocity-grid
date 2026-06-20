@@ -1,0 +1,86 @@
+@use '../abstracts' as *;
+
+.modal {
+  @include flex-center;
+
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  padding: $space-lg;
+  background-color: rgb(5 5 10 / 70%);
+  backdrop-filter: blur(rem(6px));
+  opacity: 0;
+  visibility: hidden; // also keeps the closed dialog out of the tab order
+  transition:
+    opacity $transition-base,
+    visibility $transition-base;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.modal__dialog {
+  position: relative;
+  width: min(100%, rem(900px));
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: $color-surface;
+  border: $border-thin;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  transform: translateY(rem(16px)) scale(0.98);
+  transition: transform $transition-base;
+
+  .modal.is-open & {
+    transform: none;
+  }
+}
+
+.modal__head {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+  padding: $space-lg;
+  background-color: $color-surface;
+  border-bottom: $border-thin;
+}
+
+.modal__title {
+  font-size: rem(22px);
+}
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40px);
+  height: rem(40px);
+  font-size: rem(28px);
+  line-height: 1;
+  color: $color-text-muted;
+  border-radius: 50%;
+  transition:
+    color $transition-fast,
+    background-color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-text;
+    background-color: $color-surface-raised;
+  }
+}
+
+.modal__body {
+  padding: $space-lg;
+}

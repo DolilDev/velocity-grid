@@ -1,0 +1,193 @@
+@use '../abstracts' as *;
+
+// --- Filter toolbar ----------------------------------------------------------
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+  margin-bottom: $space-sm;
+}
+
+.toolbar__hint {
+  margin-bottom: $space-2xl;
+  font-size: rem(13px);
+  color: $color-text-muted;
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+
+.filter__btn {
+  padding: $space-2xs $space-md;
+  font-family: $font-display;
+  font-size: rem(14px);
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  background-color: $color-surface;
+  border: $border-thin;
+  border-radius: $radius-pill;
+  transition:
+    color $transition-fast,
+    background-color $transition-fast,
+    border-color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-text;
+    border-color: $color-text-muted;
+  }
+
+  &.is-active {
+    color: #fff;
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+// Active category buttons reuse the shared category colour map.
+@each $name, $color in $category-colors {
+  .filter__btn[data-filter='#{$name}'].is-active {
+    color: $color-bg;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+.notice {
+  padding: $space-lg;
+  color: $color-text-muted;
+  background-color: $color-surface;
+  border: $border-thin;
+  border-radius: $radius-md;
+}
+
+// --- Technical-data table ----------------------------------------------------
+.table-wrap {
+  overflow-x: auto;
+  border: $border-thin;
+  border-radius: $radius-md;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: rem(14px);
+  white-space: nowrap;
+
+  th,
+  td {
+    padding: $space-sm $space-md;
+    text-align: left;
+    border-bottom: $border-thin;
+  }
+
+  thead th {
+    font-family: $font-display;
+    font-size: rem(12px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    background-color: $color-surface-raised;
+  }
+
+  th[scope='row'] {
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  tbody tr:last-child :is(th, td) {
+    border-bottom: 0;
+  }
+
+  tbody tr:hover {
+    background-color: rgb(255 255 255 / 3%);
+  }
+}
+
+// --- Comparison view (rendered into the modal) -------------------------------
+.compare__cars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-md;
+  margin-bottom: $space-lg;
+}
+
+.compare__car {
+  text-align: center;
+}
+
+.compare__car-media {
+  @include flex-center;
+
+  padding: $space-md;
+  margin-bottom: $space-sm;
+  border-radius: $radius-md;
+  background: linear-gradient(
+    135deg,
+    var(--car-from, #{$color-primary}),
+    var(--car-to, #{$color-accent})
+  );
+}
+
+.compare__car-art {
+  width: 100%;
+  max-width: rem(180px);
+  height: auto;
+}
+
+.compare__car-name {
+  font-family: $font-display;
+  font-size: rem(18px);
+  font-weight: $font-weight-bold;
+}
+
+.compare__car-team {
+  font-size: rem(12px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.compare__table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-sm;
+    text-align: center;
+    border-bottom: $border-thin;
+  }
+
+  thead th {
+    font-family: $font-display;
+    font-size: rem(12px);
+    text-transform: uppercase;
+    color: $color-text-muted;
+  }
+
+  th[scope='row'] {
+    text-align: left;
+    font-size: rem(13px);
+    font-weight: $font-weight-semibold;
+    color: $color-text-muted;
+  }
+}
+
+.compare__value {
+  font-family: $font-display;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+// Highlights the stronger value in each row.
+.compare__value.is-better {
+  color: $color-accent;
+}

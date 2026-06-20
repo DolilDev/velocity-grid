@@ -1,0 +1,37 @@
+@use '../abstracts' as *;
+
+.section {
+  padding-block: $space-3xl;
+
+  @include respond('md') {
+    padding-block: $space-4xl;
+  }
+}
+
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  max-width: $content-max;
+  margin-bottom: $space-2xl;
+}
+
+// Responsive card grid: 1 → 2 → 3 columns via the respond() mixin.
+.car-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-lg;
+
+  @include respond('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Cards removed by the filter are hidden outright so the grid reflows.
+.car-grid > [hidden] {
+  display: none;
+}

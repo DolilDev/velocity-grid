@@ -1,0 +1,76 @@
+@use '../abstracts' as *;
+
+.footer {
+  margin-top: $space-4xl;
+  padding-block: $space-3xl $space-lg;
+  background-color: $color-surface;
+  border-top: $border-thin;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-2xl;
+
+  @include respond('md') {
+    grid-template-columns: 1.4fr 2fr;
+  }
+}
+
+.footer__logo {
+  font-family: $font-display;
+  font-size: rem(24px);
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.04em;
+}
+
+.footer__blurb {
+  max-width: rem(360px);
+  margin-top: $space-sm;
+  color: $color-text-muted;
+}
+
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-lg;
+
+  @include respond('sm') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer__heading {
+  margin-bottom: $space-sm;
+  font-size: rem(13px);
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+}
+
+.footer__col a {
+  display: inline-block;
+  padding-block: $space-2xs;
+  color: $color-text-muted;
+  transition: color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-text;
+  }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: $space-sm;
+  margin-top: $space-2xl;
+  padding-top: $space-lg;
+  border-top: $border-thin;
+  font-size: rem(13px);
+  color: $color-text-muted;
+}
+
+.footer__disclaimer {
+  max-width: none;
+}

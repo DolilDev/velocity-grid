@@ -1,0 +1,61 @@
+@use '../abstracts' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+  padding: $space-sm $space-lg;
+  font-family: $font-display;
+  font-size: rem(16px);
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  border: rem(2px) solid transparent;
+  border-radius: $radius-pill;
+  transition:
+    background-color $transition-base,
+    border-color $transition-base,
+    color $transition-base,
+    transform $transition-fast;
+
+  &:active {
+    transform: translateY(rem(1px));
+  }
+
+  // Variants stay one line each thanks to the button-variant mixin.
+  &--primary {
+    @include button-variant($color-primary, #fff, $color-primary-dark);
+  }
+
+  &--compare {
+    @include button-variant($color-surface-raised, $color-text, $color-surface);
+
+    border-color: $color-border;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // Ghost is hand-written: it tweaks the border alongside the background on
+  // hover, which the colour-only mixin does not cover.
+  &--ghost {
+    color: $color-text;
+    background-color: transparent;
+    border-color: $color-border;
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgb(255 255 255 / 8%);
+      border-color: $color-text;
+    }
+  }
+}
+
+.button__count {
+  color: $color-primary;
+  font-variant-numeric: tabular-nums;
+}

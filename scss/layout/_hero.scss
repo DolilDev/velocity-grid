@@ -1,0 +1,130 @@
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh; // accounts for mobile browser chrome where supported
+  padding-block: $space-4xl;
+  overflow: hidden;
+  // Layered brand glows over the base background.
+  background:
+    radial-gradient(60% 80% at 80% 8%, rgb(225 6 0 / 18%), transparent 60%),
+    radial-gradient(55% 60% at 8% 92%, rgb(0 194 214 / 14%), transparent 60%), $color-bg;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+// Streaks that sweep across the hero to suggest speed.
+.hero__speedline {
+  position: absolute;
+  height: rem(2px);
+  width: 45%;
+  background: linear-gradient(90deg, transparent, $color-primary, transparent);
+  border-radius: $radius-pill;
+  opacity: 0;
+  animation: speed-streak 3.6s linear infinite;
+}
+
+.hero__speedline:nth-child(1) {
+  top: 18%;
+  width: 50%;
+  animation-duration: 3.2s;
+}
+
+.hero__speedline:nth-child(2) {
+  top: 34%;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, $color-accent, transparent);
+  animation-duration: 4.1s;
+  animation-delay: 0.8s;
+}
+
+.hero__speedline:nth-child(3) {
+  top: 52%;
+  width: 60%;
+  animation-duration: 2.8s;
+  animation-delay: 0.4s;
+}
+
+.hero__speedline:nth-child(4) {
+  top: 68%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, $color-accent, transparent);
+  animation-duration: 4.6s;
+  animation-delay: 1.4s;
+}
+
+.hero__speedline:nth-child(5) {
+  top: 84%;
+  width: 30%;
+  animation-duration: 3.4s;
+  animation-delay: 0.2s;
+}
+
+@keyframes speed-streak {
+  0% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+
+  15%,
+  85% {
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: $z-base;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+  max-width: rem(820px);
+}
+
+.hero__tagline {
+  margin-top: $space-2xs;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+  margin-top: $space-sm;
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xl;
+  margin-top: $space-xl;
+  padding-top: $space-xl;
+  border-top: $border-thin;
+}
+
+.hero__stat-label {
+  font-size: rem(12px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.hero__stat-value {
+  margin-top: $space-2xs;
+  font-family: $font-display;
+  font-size: clamp(rem(28px), 4vw, rem(40px));
+  font-weight: $font-weight-bold;
+  line-height: 1;
+}

@@ -14,3 +14,20 @@
 @use 'base/reset';
 @use 'base/base';
 @use 'base/typography';
+
+// 3. Components — self-contained, reusable building blocks.
+@use 'components/button';
+@use 'components/badge';
+@use 'components/nav';
+@use 'components/card';
+@use 'components/spec-bar';
+@use 'components/modal';
+
+// 4. Layout — page regions that arrange components.
+@use 'layout/header';
+@use 'layout/hero';
+@use 'layout/grid';
+@use 'layout/footer';
+
+// 5. Pages — composition specific to the home page.
+@use 'pages/home';

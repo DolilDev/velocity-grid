@@ -1,0 +1,178 @@
+@use '../abstracts' as *;
+
+.car-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-surface;
+  border: $border-thin;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  @include card-hover;
+}
+
+.car-card__media {
+  @include flex-center;
+
+  position: relative;
+  aspect-ratio: 16 / 10;
+  padding: $space-xl;
+  // Per-card gradient: JS sets --car-from / --car-to on this element.
+  background:
+    radial-gradient(120% 130% at 18% 12%, rgb(255 255 255 / 8%), transparent 55%),
+    linear-gradient(135deg, var(--car-from, #{$color-primary}), var(--car-to, #{$color-accent}));
+}
+
+.car-card__art {
+  width: 100%;
+  max-width: rem(280px);
+  height: auto;
+  filter: drop-shadow(0 rem(12px) rem(18px) rgb(0 0 0 / 45%));
+}
+
+.car-card__badges {
+  position: absolute;
+  top: $space-md;
+  left: $space-md;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+
+.car-card__select {
+  position: absolute;
+  top: $space-md;
+  right: $space-md;
+}
+
+.car-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-lg;
+}
+
+.car-card__team {
+  @include truncate;
+
+  font-size: rem(12px);
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.car-card__name {
+  font-size: rem(22px);
+  line-height: 1.15;
+}
+
+.car-card__specs {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: auto; // pins the spec bars to the bottom of uneven cards
+}
+
+.car-card__meta {
+  display: flex;
+  gap: $space-lg;
+  padding-top: $space-md;
+  border-top: $border-thin;
+}
+
+.car-card__meta-label {
+  display: block;
+  font-size: rem(11px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.car-card__meta-value {
+  font-family: $font-display;
+  font-size: rem(18px);
+  font-weight: $font-weight-bold;
+}
+
+// --- Custom compare checkbox shown in the card corner -----------------------
+.compare-toggle {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.compare-toggle__input {
+  position: absolute;
+  width: rem(1px);
+  height: rem(1px);
+  opacity: 0;
+}
+
+.compare-toggle__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(28px);
+  height: rem(28px);
+  color: transparent;
+  font-size: rem(16px);
+  background-color: rgb(0 0 0 / 45%);
+  border: rem(2px) solid rgb(255 255 255 / 55%);
+  border-radius: $radius-sm;
+  backdrop-filter: blur(rem(4px));
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast;
+}
+
+.compare-toggle__input:checked + .compare-toggle__box {
+  color: #fff;
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+.compare-toggle__input:focus-visible + .compare-toggle__box {
+  outline: rem(2px) solid $color-accent;
+  outline-offset: rem(2px);
+}
+
+.compare-toggle__input:disabled + .compare-toggle__box {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+// --- Filter enter / exit animations -----------------------------------------
+// Keyframes (not transitions) so they never clash with the card-hover lift.
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(rem(10px)) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes card-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.car-card--enter {
+  animation: card-in $transition-base both;
+}
+
+.car-card--exit {
+  animation: card-out $transition-fast forwards;
+}

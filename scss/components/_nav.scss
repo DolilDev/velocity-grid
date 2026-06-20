@@ -1,0 +1,73 @@
+@use '../abstracts' as *;
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm $space-lg;
+  padding-block: $space-md;
+}
+
+.nav__brand {
+  @include flex-center(row, $space-sm);
+
+  color: $color-text;
+}
+
+.nav__mark {
+  flex-shrink: 0;
+  color: $color-primary; // drives the currentColor chevron in the SVG mark
+}
+
+.nav__brand-text {
+  font-family: $font-display;
+  font-size: rem(22px);
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.04em;
+}
+
+.nav__brand-accent {
+  color: $color-primary;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+
+  @include respond('sm') {
+    gap: $space-lg;
+  }
+}
+
+.nav__link {
+  position: relative;
+  padding-block: $space-2xs;
+  color: $color-text-muted;
+  font-weight: $font-weight-medium;
+  transition: color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-text;
+  }
+
+  // Underline that wipes in from the left on hover/focus.
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: rem(2px);
+    background-color: $color-primary;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $transition-base;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
+}

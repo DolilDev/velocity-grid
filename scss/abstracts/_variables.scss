@@ -1,0 +1,104 @@
+@use 'functions' as *;
+
+// =============================================================================
+// Design tokens — the single source of truth for the whole UI.
+// Dark theme is the default and only theme.
+// =============================================================================
+
+// --- Colour: surfaces --------------------------------------------------------
+$color-bg: #0b0b12;
+$color-surface: #14141e;
+$color-surface-raised: #1d1d2b;
+$color-border: #2a2a3a;
+
+// --- Colour: text ------------------------------------------------------------
+// Both pass WCAG AA on the surfaces above (muted is ~6.9:1 on $color-surface).
+$color-text: #f5f6fa;
+$color-text-muted: #9aa3bd;
+
+// --- Colour: brand -----------------------------------------------------------
+// $color-primary keeps white text above 4.5:1, so buttons stay AA-compliant.
+$color-primary: #e10600; // APEX racing red
+$color-primary-dark: #b00500;
+$color-accent: #00c2d6; // electric cyan
+$color-accent-dark: #0096a6;
+
+// Signature gradient reused by the hero, the SVG bodywork and the spec bars.
+$brand-gradient: linear-gradient(120deg, $color-primary 0%, #ff5a1f 55%, $color-accent 135%);
+
+// Per-category accents — consumed by badges and the filter UI via sass:map.
+$category-colors: (
+  'prototype': #ff5a1f,
+  'classic': #c8a04b,
+  'concept': #00c2d6,
+);
+
+// --- Typography --------------------------------------------------------------
+$font-display: 'Rajdhani', 'Arial Narrow', system-ui, sans-serif;
+$font-body:
+  'Inter',
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.1;
+$line-height-base: 1.6;
+$letter-spacing-wide: 0.08em;
+
+// --- Spacing scale -----------------------------------------------------------
+// One 8px base unit; every step is derived from it with SCSS math so the
+// rhythm stays proportional and there are no stray magic numbers downstream.
+$space-unit: rem(8px);
+$space-2xs: $space-unit * 0.5; // 4px
+$space-xs: $space-unit; // 8px
+$space-sm: $space-unit * 1.5; // 12px
+$space-md: $space-unit * 2; // 16px
+$space-lg: $space-unit * 3; // 24px
+$space-xl: $space-unit * 4; // 32px
+$space-2xl: $space-unit * 6; // 48px
+$space-3xl: $space-unit * 8; // 64px
+$space-4xl: $space-unit * 12; // 96px
+
+// --- Layout ------------------------------------------------------------------
+$container-max: rem(1200px);
+$content-max: rem(720px);
+
+$radius-sm: rem(6px);
+$radius-md: rem(12px);
+$radius-lg: rem(20px);
+$radius-pill: 999px;
+
+$border-thin: rem(1px) solid $color-border;
+
+// --- Breakpoints -------------------------------------------------------------
+// Mobile-first min-width values, consumed only through the respond() mixin.
+$breakpoints: (
+  'sm': 480px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+);
+
+// --- Motion ------------------------------------------------------------------
+$transition-fast: 150ms ease;
+$transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// --- Elevation ---------------------------------------------------------------
+$shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+$shadow-md: 0 8px 24px rgb(0 0 0 / 45%);
+$shadow-lg: 0 16px 40px rgb(0 0 0 / 55%);
+
+// --- Z-index scale -----------------------------------------------------------
+// Named layers prevent the "z-index: 9999" arms race.
+$z-base: 1;
+$z-raised: 10;
+$z-nav: 100;
+$z-modal-backdrop: 900;
+$z-modal: 1000;

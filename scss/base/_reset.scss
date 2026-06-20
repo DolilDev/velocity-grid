@@ -1,0 +1,63 @@
+// A small, modern reset. Only the rules this project actually relies on —
+// no kitchen-sink normalisation.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// Replaced elements behave as blocks and never overflow their container,
+// which keeps the layout free of horizontal scrollbars.
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Form controls do not inherit typography by default — make them.
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+// Avoid the "wall of text" — long words break instead of overflowing.
+p,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+}

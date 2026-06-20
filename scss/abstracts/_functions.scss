@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+// Root font-size every px design value is measured against.
+$root-font-size: 16px !default;
+
+// px → rem.
+//
+// The whole UI is sized in rem so it scales with the user's browser
+// font-size preference (an accessibility win). Designs, however, are handed
+// over in px — this function keeps the source readable (`rem(24px)`) while the
+// output stays relative.
+@function rem($px) {
+  @return math.div($px, $root-font-size) * 1rem;
+}

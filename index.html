@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APEX Racing Series — fikcyjne bolidy w stylu F1</title>
+
+    <meta
+      name="description"
+      content="APEX Racing Series — fikcyjne portfolio sześciu bolidów w stylu F1. Galeria, animowane paski osiągów, porównywarka i dane techniczne. Projekt pokazowy front-end."
+    />
+    <meta name="theme-color" content="#0b0b12" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Fonts: preconnect warms up the TLS handshake, preload fetches the
+         critical stylesheet early. System fallbacks in SCSS cover offline use. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+
+    <header class="site-header" id="top" data-site-header>
+      <nav class="nav container" aria-label="Główna nawigacja">
+        <a class="nav__brand" href="#top" aria-label="APEX Racing Series — strona główna">
+          <svg class="nav__mark" viewBox="0 0 64 64" width="32" height="32" aria-hidden="true">
+            <path d="M14 46 L30 18 h8 L22 46 Z" fill="currentColor" />
+            <path d="M30 46 L46 18 h8 L38 46 Z" fill="#00c2d6" />
+          </svg>
+          <span class="nav__brand-text">APEX<span class="nav__brand-accent">Racing</span></span>
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a class="nav__link" href="#cars">Bolidy</a></li>
+          <li><a class="nav__link" href="#specs">Dane techniczne</a></li>
+          <li><a class="nav__link" href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ============================ HERO ============================ -->
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero__bg" aria-hidden="true">
+          <span class="hero__speedline"></span>
+          <span class="hero__speedline"></span>
+          <span class="hero__speedline"></span>
+          <span class="hero__speedline"></span>
+          <span class="hero__speedline"></span>
+        </div>
+
+        <div class="container hero__inner">
+          <p class="eyebrow hero__eyebrow">APEX Racing Series · Sezon 2026</p>
+          <h1 class="hero__title" id="hero-title">
+            Prędkość, której nie znajdziesz w żadnym katalogu
+          </h1>
+          <p class="hero__tagline lead">
+            Sześć w pełni fikcyjnych bolidów w stylu Formuły 1 — od surowych prototypów po
+            wizjonerskie koncepty. Zaprojektowane wyłącznie w kodzie.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#cars">Poznaj bolidy</a>
+            <a class="button button--ghost" href="#specs">Dane techniczne</a>
+          </div>
+
+          <dl class="hero__stats">
+            <div class="hero__stat">
+              <dt class="hero__stat-label">Bolidów w garażu</dt>
+              <dd class="hero__stat-value">6</dd>
+            </div>
+            <div class="hero__stat">
+              <dt class="hero__stat-label">Kategorie</dt>
+              <dd class="hero__stat-value">3</dd>
+            </div>
+            <div class="hero__stat">
+              <dt class="hero__stat-label">Prędkość maks.</dt>
+              <dd class="hero__stat-value">385 km/h</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ========================== GALERIA =========================== -->
+      <section class="section cars" id="cars" aria-labelledby="cars-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Garaż</p>
+            <h2 class="section__title" id="cars-title">Galeria bolidów</h2>
+            <p class="lead">
+              Filtruj według kategorii i zaznacz dwa bolidy, aby porównać ich osiągi obok siebie.
+            </p>
+          </header>
+
+          <div class="toolbar">
+            <div class="filter" role="group" aria-label="Filtruj bolidy według kategorii">
+              <button
+                class="filter__btn is-active"
+                type="button"
+                data-filter="all"
+                aria-pressed="true"
+              >
+                Wszystkie
+              </button>
+              <button
+                class="filter__btn"
+                type="button"
+                data-filter="prototype"
+                aria-pressed="false"
+              >
+                Prototyp
+              </button>
+              <button class="filter__btn" type="button" data-filter="classic" aria-pressed="false">
+                Klasyczny
+              </button>
+              <button class="filter__btn" type="button" data-filter="concept" aria-pressed="false">
+                Koncept
+              </button>
+            </div>
+
+            <button
+              class="button button--compare"
+              type="button"
+              data-compare-open
+              disabled
+              aria-describedby="compare-hint"
+            >
+              Porównaj <span class="button__count" data-compare-count>0</span>/2
+            </button>
+          </div>
+          <p class="toolbar__hint" id="compare-hint">Zaznacz dwa bolidy, aby je porównać.</p>
+
+          <!-- Announces filter results to screen readers without moving focus. -->
+          <p class="visually-hidden" role="status" aria-live="polite" data-result-count></p>
+
+          <!-- Cards are rendered from js/data.js (the single source of truth). -->
+          <ul class="car-grid" id="car-grid" role="list" data-car-grid></ul>
+
+          <noscript>
+            <p class="notice">
+              Galeria i tabela renderują się w JavaScript. Włącz JavaScript, aby zobaczyć bolidy.
+            </p>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- ======================= DANE TECHNICZNE ====================== -->
+      <section class="section specs" id="specs" aria-labelledby="specs-title">
+        <div class="container">
+          <header class="section__head">
+            <p class="eyebrow">Dane</p>
+            <h2 class="section__title" id="specs-title">Dane techniczne</h2>
+            <p class="lead">
+              Pełna specyfikacja każdego bolidu. Przewijaj w poziomie na mniejszych ekranach.
+            </p>
+          </header>
+
+          <div
+            class="table-wrap"
+            tabindex="0"
+            role="region"
+            aria-label="Tabela danych technicznych bolidów (przewijana)"
+          >
+            <table class="spec-table" data-spec-table></table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========================= PORÓWNYWARKA ========================= -->
+    <div
+      class="modal"
+      id="compare-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="compare-title"
+      aria-hidden="true"
+      data-compare-modal
+    >
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog" role="document">
+        <header class="modal__head">
+          <h2 class="modal__title" id="compare-title">Porównanie bolidów</h2>
+          <button
+            class="modal__close"
+            type="button"
+            data-modal-close
+            aria-label="Zamknij porównanie"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </header>
+        <div class="modal__body" data-compare-body></div>
+      </div>
+    </div>
+
+    <!-- ============================ STOPKA ========================== -->
+    <footer class="footer" id="contact">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <span class="footer__logo">APEX<span class="nav__brand-accent">Racing</span></span>
+          <p class="footer__blurb">
+            Fikcyjna seria wyścigowa stworzona jako projekt portfolio front-end developera.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Stopka">
+          <div class="footer__col">
+            <h2 class="footer__heading">Seria</h2>
+            <ul role="list">
+              <li><a href="#">Kalendarz</a></li>
+              <li><a href="#">Regulamin</a></li>
+              <li><a href="#">Zespoły</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h2 class="footer__heading">Bolidy</h2>
+            <ul role="list">
+              <li><a href="#cars">Galeria</a></li>
+              <li><a href="#specs">Dane techniczne</a></li>
+              <li><a href="#">Technologia</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h2 class="footer__heading">Kontakt</h2>
+            <ul role="list">
+              <li><a href="#">Prasa</a></li>
+              <li><a href="#">Partnerzy</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom container">
+        <p class="footer__disclaimer">
+          Fikcyjny projekt portfolio — wszystkie marki, zespoły, kierowcy i bolidy są zmyślone.
+        </p>
+        <p class="footer__copy">© 2026 APEX Racing Series</p>
+      </div>
+    </footer>
+  </body>
+</html>

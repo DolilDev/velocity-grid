@@ -1,0 +1,106 @@
+// Single source of truth for the whole site. Pure data, no logic — the gallery,
+// the spec table and the comparison modal all read from here.
+
+// Display labels for each category key. Keys match the SCSS category map and the
+// data-filter attributes in the markup.
+export const CATEGORIES = {
+  all: { label: 'Wszystkie' },
+  prototype: { label: 'Prototyp' },
+  classic: { label: 'Klasyczny' },
+  concept: { label: 'Koncept' },
+};
+
+export const cars = [
+  {
+    id: 'vortex-gt',
+    name: 'Vortex GT',
+    team: 'Stratos Dynamics',
+    category: 'prototype',
+    colors: { from: '#ff3b30', to: '#7a0a06' },
+    // 0–100 performance scores that drive the animated spec bars.
+    performance: { speed: 96, acceleration: 90, downforce: 78 },
+    // Real-world figures for the meta row, the table and the comparison.
+    specs: {
+      engine: 'V6 Turbo Hybrid 1.6L',
+      power: 1040, // KM
+      weight: 752, // kg
+      topSpeed: 385, // km/h
+      zeroToHundred: 2.4, // s
+    },
+  },
+  {
+    id: 'tempest-x1',
+    name: 'Tempest X1',
+    team: 'Nova Motorworks',
+    category: 'prototype',
+    colors: { from: '#ff7a18', to: '#9c1b00' },
+    performance: { speed: 92, acceleration: 95, downforce: 71 },
+    specs: {
+      engine: 'V8 Twin-Turbo 2.4L',
+      power: 1120,
+      weight: 740,
+      topSpeed: 372,
+      zeroToHundred: 2.2,
+    },
+  },
+  {
+    id: 'meridian-300',
+    name: 'Meridian 300',
+    team: 'Vanguard Heritage',
+    category: 'classic',
+    colors: { from: '#d8a84b', to: '#6e4a14' },
+    performance: { speed: 78, acceleration: 62, downforce: 55 },
+    specs: {
+      engine: 'V12 N/A 3.0L',
+      power: 620,
+      weight: 690,
+      topSpeed: 318,
+      zeroToHundred: 3.4,
+    },
+  },
+  {
+    id: 'aurelia-gt',
+    name: 'Aurelia GT',
+    team: 'Crownline Classics',
+    category: 'classic',
+    colors: { from: '#3da17a', to: '#13402f' },
+    performance: { speed: 74, acceleration: 58, downforce: 50 },
+    specs: {
+      engine: 'Inline-6 N/A 2.5L',
+      power: 540,
+      weight: 705,
+      topSpeed: 305,
+      zeroToHundred: 3.8,
+    },
+  },
+  {
+    id: 'eclipse-veloce',
+    name: 'Eclipse Veloce',
+    team: 'Aurora Aerolab',
+    category: 'concept',
+    colors: { from: '#00d4e6', to: '#0b3a8a' },
+    performance: { speed: 90, acceleration: 84, downforce: 92 },
+    specs: {
+      engine: 'Triple-Motor EV',
+      power: 1300,
+      weight: 820,
+      topSpeed: 360,
+      zeroToHundred: 2.6,
+    },
+  },
+  {
+    id: 'phantom-r9',
+    name: 'Phantom R9',
+    team: 'Halcyon Future',
+    category: 'concept',
+    colors: { from: '#c724b1', to: '#2a0a6e' },
+    performance: { speed: 94, acceleration: 86, downforce: 96 },
+    specs: {
+      engine: 'Quad-Motor EV',
+      power: 1500,
+      weight: 845,
+      topSpeed: 378,
+      zeroToHundred: 2.3,
+    },
+  },
+];

@@ -65,7 +65,7 @@ export const renderSpecTable = (tableEl) => {
 
   tableEl.innerHTML = `
     <caption class="visually-hidden">
-      Dane techniczne bolidów APEX Racing Series. Kliknij nagłówek kolumny, aby posortować.
+      Dane techniczne bolidów Velocity Grid. Kliknij nagłówek kolumny, aby posortować.
     </caption>
     <thead>
       <tr>${headMarkup()}</tr>

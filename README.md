@@ -1,10 +1,10 @@
-# APEX Racing Series
+# Velocity Grid
 
 A static portfolio site presenting six fictional Formula 1‑style concept cars. Built as a
 front‑end showcase with an emphasis on **SCSS architecture, code quality, accessibility and
 pixel‑perfect detail** — no frameworks, no bundler, zero runtime dependencies.
 
-> ⚠️ **Everything here is fictional.** APEX Racing Series, the teams, the cars and every spec
+> ⚠️ **Everything here is fictional.** Velocity Grid, the teams, the cars and every spec
 > are made up for this portfolio project. There are no real brands, logos, drivers or photos —
 > each car is drawn from code as an inline SVG built from two brand colours.
 

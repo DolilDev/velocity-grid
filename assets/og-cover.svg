@@ -4,7 +4,7 @@
   width="1200"
   height="630"
   role="img"
-  aria-label="APEX Racing Series — fikcyjne bolidy w stylu F1"
+  aria-label="Velocity Grid — fikcyjne bolidy w stylu F1"
 >
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -25,7 +25,7 @@
   <path d="M210 360 L300 180 h70 L280 360 Z" fill="#00c2d6" />
 
   <text x="120" y="470" font-family="Arial, sans-serif" font-size="84" font-weight="700" fill="#f5f6fa">
-    APEX Racing Series
+    Velocity Grid
   </text>
   <text x="124" y="528" font-family="Arial, sans-serif" font-size="32" fill="#9aa3bd">
     Fikcyjne bolidy w stylu F1 · projekt portfolio front-end

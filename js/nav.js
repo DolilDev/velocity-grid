@@ -37,6 +37,19 @@ export const initStickyNav = (headerEl) => {
   window.addEventListener('scroll', onScroll, { passive: true });
 };
 
+export const initHeaderOffset = (headerEl) => {
+  if (!headerEl) {
+    return;
+  }
+
+  const apply = () => {
+    document.documentElement.style.setProperty('--header-height', `${headerEl.offsetHeight}px`);
+  };
+
+  apply();
+  window.addEventListener('resize', apply, { passive: true });
+};
+
 const ACTIVE_LINK_CLASS = 'is-active';
 
 const SPY_LINE_RATIO = 0.3;

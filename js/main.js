@@ -1,6 +1,6 @@
 import { renderGallery } from './gallery.js';
 import { renderSpecTable } from './specTable.js';
-import { initStickyNav, initScrollSpy, initScrollToTop } from './nav.js';
+import { initStickyNav, initScrollSpy, initScrollToTop, initHeaderOffset } from './nav.js';
 import { initSpecBars } from './specBars.js';
 import { initFilter } from './filter.js';
 import { initCompare } from './compare.js';
@@ -14,6 +14,7 @@ const filterButtons = document.querySelectorAll('[data-filter]');
 const resultStatus = document.querySelector('[data-result-count]');
 
 initStickyNav(siteHeader);
+initHeaderOffset(siteHeader);
 initScrollSpy(navLinks);
 initScrollToTop(navBrand);
 

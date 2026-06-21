@@ -127,7 +127,9 @@ export const initCompare = ({ grid, openButton, countEl, modal, modalBody } = {}
     modal.classList.add(OPEN_CLASS);
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden'; // lock background scroll
-    (closeButton ?? modal).focus();
+    // Defer focus by a frame: the dialog transitions from visibility:hidden,
+    // and an element can't take focus until it is actually visible.
+    window.requestAnimationFrame(() => (closeButton ?? modal).focus());
   };
 
   const closeModal = () => {
@@ -163,7 +165,12 @@ export const initCompare = ({ grid, openButton, countEl, modal, modalBody } = {}
 
   closeEls.forEach((el) => el.addEventListener('click', closeModal));
 
-  modal.addEventListener('keydown', (event) => {
+  // Document-level so Escape works even if focus never made it into the dialog;
+  // both handlers no-op while the modal is closed.
+  document.addEventListener('keydown', (event) => {
+    if (!modal.classList.contains(OPEN_CLASS)) {
+      return;
+    }
     if (event.key === 'Escape') {
       closeModal();
     } else if (event.key === 'Tab') {

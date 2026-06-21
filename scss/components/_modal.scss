@@ -11,13 +11,18 @@
   backdrop-filter: blur(rem(6px));
   opacity: 0;
   visibility: hidden; // also keeps the closed dialog out of the tab order
+  // On close, hold visibility until the fade-out finishes (delay == duration).
   transition:
     opacity $transition-base,
-    visibility $transition-base;
+    visibility 0s linear $duration-base;
 
   &.is-open {
     opacity: 1;
     visibility: visible;
+    // On open, flip to visible immediately so the dialog is focusable at once.
+    transition:
+      opacity $transition-base,
+      visibility 0s;
   }
 }
 

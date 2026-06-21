@@ -86,9 +86,15 @@ $breakpoints: (
 );
 
 // --- Motion ------------------------------------------------------------------
-$transition-fast: 150ms ease;
-$transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-$transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+// Durations are exposed separately so they can be reused as transition delays
+// (e.g. holding a modal visible until its fade-out finishes).
+$duration-fast: 150ms;
+$duration-base: 250ms;
+$duration-slow: 600ms;
+
+$transition-fast: $duration-fast ease;
+$transition-base: $duration-base cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: $duration-slow cubic-bezier(0.4, 0, 0.2, 1);
 
 // --- Elevation ---------------------------------------------------------------
 $shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);

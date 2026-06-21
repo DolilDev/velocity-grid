@@ -1,6 +1,3 @@
-// A small, modern reset. Only the rules this project actually relies on —
-// no kitchen-sink normalisation.
-
 *,
 *::before,
 *::after {
@@ -16,8 +13,6 @@ html {
   text-size-adjust: 100%;
 }
 
-// Replaced elements behave as blocks and never overflow their container,
-// which keeps the layout free of horizontal scrollbars.
 img,
 picture,
 svg,
@@ -27,7 +22,6 @@ video {
   height: auto;
 }
 
-// Form controls do not inherit typography by default — make them.
 input,
 button,
 textarea,
@@ -53,7 +47,6 @@ ol {
   padding: 0;
 }
 
-// Avoid the "wall of text" — long words break instead of overflowing.
 p,
 h1,
 h2,

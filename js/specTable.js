@@ -1,7 +1,3 @@
-// Renders the technical-data table and makes it sortable. Each column header is
-// a button; clicking it sorts by that column and toggles the direction.
-// aria-sort keeps the current state exposed to assistive technology.
-
 import { cars, CATEGORIES } from './data.js';
 
 const DIR_ASC = 1;
@@ -9,8 +5,6 @@ const ARIA_ASC = 'ascending';
 const ARIA_DESC = 'descending';
 const ARIA_NONE = 'none';
 
-// Each column knows how to read its value, its type (text vs numeric sort) and
-// how to format the cell. The first column is the row header.
 const COLUMNS = [
   { key: 'name', label: 'Bolid', type: 'text', rowHeader: true, get: (c) => c.name },
   { key: 'team', label: 'Zespół', type: 'text', get: (c) => c.team },
@@ -84,7 +78,6 @@ export const renderSpecTable = (tableEl) => {
   let direction = DIR_ASC;
 
   const sortByColumn = (column, headerEl) => {
-    // Same column again flips direction; a new column starts ascending.
     direction = activeKey === column.key ? -direction : DIR_ASC;
     activeKey = column.key;
 

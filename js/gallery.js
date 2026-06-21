@@ -1,19 +1,13 @@
-// Renders the card gallery from the car dataset. Markup-building only —
-// interactions (filtering, spec bars, comparison) live in their own modules,
-// and the technical-data table has its own module (specTable.js).
-
 import { cars, CATEGORIES } from './data.js';
 import { carArt } from './carArt.js';
 
-// The three animated bars shown on every card, mapped to performance scores.
 const SPEC_BARS = [
   { key: 'speed', label: 'Prędkość' },
   { key: 'acceleration', label: 'Przyspieszenie' },
   { key: 'downforce', label: 'Docisk' },
 ];
 
-// Cars at or above this top speed earn the "Top speed" badge.
-const TOP_SPEED_BADGE_THRESHOLD = 375; // km/h
+const TOP_SPEED_BADGE_THRESHOLD = 375;
 
 const specBarMarkup = ({ label }, value) => `
   <div class="spec-bar">

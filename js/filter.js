@@ -1,21 +1,13 @@
-// Category filtering. Buttons carry data-filter, cards carry data-category.
-// Non-matching cards animate out and then collapse from the grid; matching
-// cards drop back in and animate in. A status region announces the result count
-// to screen readers.
-
 const ACTIVE_CLASS = 'is-active';
 const ENTER_CLASS = 'car-card--enter';
 const EXIT_CLASS = 'car-card--exit';
 const ALL = 'all';
 
-// Keyframe names, matched against event.animationName so a cancelled animation's
-// stale listener can never act on the wrong transition.
 const ANIM_IN = 'card-in';
 const ANIM_OUT = 'card-out';
 
 const CARD_FORMS = ['bolid', 'bolidy', 'bolidów'];
 
-// Polish has three plural forms — pick the right one for the count.
 const polishPlural = (n, [one, few, many]) => {
   if (n === 1) {
     return one;
@@ -50,7 +42,6 @@ const finishExit = (event) => {
 };
 
 const showCard = (card) => {
-  // Cancel any in-flight exit so its listener can't hide the card later.
   card.classList.remove(EXIT_CLASS);
   card.removeEventListener('animationend', finishExit);
   if (!card.hidden) {

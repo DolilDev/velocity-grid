@@ -1,12 +1,5 @@
-// Sticky-nav scroll effect: toggles .is-scrolled on the header so the CSS can
-// fade in a background once the user leaves the top of the page.
+const SCROLL_THRESHOLD = 24;
 
-const SCROLL_THRESHOLD = 24; // px
-
-// Scroll the page back to the very top from the logo. A plain `#top` anchor
-// can't do this: #top sits on the sticky header, which is permanently pinned to
-// the viewport top, so the browser thinks it's already in view and won't scroll.
-// We scroll to 0 explicitly; the href stays as a no-JS fallback.
 export const initScrollToTop = (triggerEl) => {
   if (!triggerEl) {
     return;
@@ -28,8 +21,6 @@ export const initStickyNav = (headerEl) => {
     headerEl.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
   };
 
-  // rAF guard: scroll fires far more often than the screen repaints, so we
-  // coalesce bursts into one class update per frame.
   let ticking = false;
   const onScroll = () => {
     if (ticking) {
@@ -42,23 +33,14 @@ export const initStickyNav = (headerEl) => {
     });
   };
 
-  update(); // set the correct state on load (e.g. reload mid-page)
+  update();
   window.addEventListener('scroll', onScroll, { passive: true });
 };
 
 const ACTIVE_LINK_CLASS = 'is-active';
 
-// How far down the viewport the "you are here" line sits (fraction of height).
 const SPY_LINE_RATIO = 0.3;
 
-// Scrollspy: highlights the nav link of the section currently in view, so the
-// navbar always agrees with the content on screen.
-//
-// A position check (not IntersectionObserver) is the right tool here: the active
-// section is the last one whose top has scrolled above a reference line. That
-// also fixes the classic edge case where a short footer at the page bottom can
-// never reach a mid-viewport observer band — we just force the last link active
-// once the page is scrolled to the end.
 export const initScrollSpy = (navLinks) => {
   const links = Array.from(navLinks);
   const targets = links
@@ -91,7 +73,7 @@ export const initScrollSpy = (navLinks) => {
 
     let current = null;
     if (atBottom) {
-      current = targets[targets.length - 1]; // last section wins at page end
+      current = targets[targets.length - 1];
     } else {
       const line = window.innerHeight * SPY_LINE_RATIO;
       targets.forEach((target) => {

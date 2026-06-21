@@ -1,6 +1,3 @@
-// Entry point: wires the feature modules to the DOM. Each module owns one
-// concern; main.js only finds the mount points and hands them over.
-
 import { renderGallery } from './gallery.js';
 import { renderSpecTable } from './specTable.js';
 import { initStickyNav, initScrollSpy, initScrollToTop } from './nav.js';
@@ -26,7 +23,7 @@ if (specTable) {
 
 if (carGrid) {
   renderGallery(carGrid);
-  // Cards exist only after render, so observe and wire them up now.
+
   const cards = carGrid.querySelectorAll('.car-card');
   initSpecBars(cards);
   initFilter({ buttons: filterButtons, cards, statusEl: resultStatus });

@@ -1,8 +1,3 @@
-// Single source of truth for the whole site. Pure data, no logic — the gallery,
-// the spec table and the comparison modal all read from here.
-
-// Display labels for each category key. Keys match the SCSS category map and the
-// data-filter attributes in the markup.
 export const CATEGORIES = {
   all: { label: 'Wszystkie' },
   prototype: { label: 'Prototyp' },
@@ -17,15 +12,15 @@ export const cars = [
     team: 'Stratos Dynamics',
     category: 'prototype',
     colors: { from: '#ff3b30', to: '#7a0a06' },
-    // 0–100 performance scores that drive the animated spec bars.
+
     performance: { speed: 96, acceleration: 90, downforce: 78 },
-    // Real-world figures for the meta row, the table and the comparison.
+
     specs: {
       engine: 'V6 Turbo Hybrid 1.6L',
-      power: 1040, // KM
-      weight: 752, // kg
-      topSpeed: 385, // km/h
-      zeroToHundred: 2.4, // s
+      power: 1040,
+      weight: 752,
+      topSpeed: 385,
+      zeroToHundred: 2.4,
     },
   },
   {

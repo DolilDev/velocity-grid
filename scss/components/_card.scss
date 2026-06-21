@@ -18,7 +18,6 @@
   position: relative;
   aspect-ratio: 16 / 10;
   padding: $space-xl;
-  // Per-card gradient: JS sets --car-from / --car-to on this element.
   background:
     radial-gradient(120% 130% at 18% 12%, rgb(255 255 255 / 8%), transparent 55%),
     linear-gradient(135deg, var(--car-from, #{$color-primary}), var(--car-to, #{$color-accent}));
@@ -73,7 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: $space-sm;
-  margin-top: auto; // pins the spec bars to the bottom of uneven cards
+  margin-top: auto;
 }
 
 .car-card__meta {
@@ -97,7 +96,6 @@
   font-weight: $font-weight-bold;
 }
 
-// --- Custom compare checkbox shown in the card corner -----------------------
 .compare-toggle {
   display: inline-block;
   cursor: pointer;
@@ -144,8 +142,6 @@
   cursor: not-allowed;
 }
 
-// --- Filter enter / exit animations -----------------------------------------
-// Keyframes (not transitions) so they never clash with the card-hover lift.
 @keyframes card-in {
   from {
     opacity: 0;

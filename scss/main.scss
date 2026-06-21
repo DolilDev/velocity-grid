@@ -1,33 +1,15 @@
-// =============================================================================
-// APEX Racing Series — main stylesheet entry point.
-//
-// 7-1 architecture wired together with the Dart Sass module system (@use, not
-// the deprecated @import). Order matters: tokens/tools first (they emit no CSS),
-// then base resets, then components, layout and finally page-level glue — so the
-// cascade flows from generic to specific.
-// =============================================================================
-
-// 1. Abstracts — tokens, functions, mixins. No CSS output of their own.
 @use 'abstracts';
-
-// 2. Base — reset, global element styles, typography.
 @use 'base/reset';
 @use 'base/base';
 @use 'base/typography';
-
-// 3. Components — self-contained, reusable building blocks.
 @use 'components/button';
 @use 'components/badge';
 @use 'components/nav';
 @use 'components/card';
 @use 'components/spec-bar';
 @use 'components/modal';
-
-// 4. Layout — page regions that arrange components.
 @use 'layout/header';
 @use 'layout/hero';
 @use 'layout/grid';
 @use 'layout/footer';
-
-// 5. Pages — composition specific to the home page.
 @use 'pages/home';

@@ -1,8 +1,3 @@
-// Barrel for the abstracts layer.
-//
-// @forward re-exports the tokens, functions and mixins under one namespace so
-// every consumer writes a single `@use '../abstracts' as *;` instead of three
-// separate imports. Abstracts emit no CSS, so this is safe to pull in anywhere.
 @forward 'functions';
 @forward 'variables';
 @forward 'mixins';

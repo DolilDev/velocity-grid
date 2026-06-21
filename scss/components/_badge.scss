@@ -19,7 +19,6 @@
   backdrop-filter: blur(rem(4px));
 }
 
-// Category badge carries a coloured dot driven by --badge-color.
 .badge--category::before {
   content: '';
   width: rem(7px);
@@ -34,8 +33,6 @@
   border-color: transparent;
 }
 
-// One loop fans the shared category map out into modifier classes, so the
-// colours live in exactly one place (the map) for both badges and filters.
 @each $name, $color in $category-colors {
   .badge--#{$name} {
     --badge-color: #{$color};

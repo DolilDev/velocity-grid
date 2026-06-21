@@ -1,12 +1,10 @@
 @use '../abstracts' as *;
 
 :root {
-  // Tells the browser to render native UI (form controls, scrollbars) dark.
   color-scheme: dark;
 }
 
 html {
-  // 100% keeps the rem scale anchored to the user's own font-size setting.
   font-size: 100%;
   scroll-behavior: smooth;
 }
@@ -23,20 +21,17 @@ body {
   text-rendering: optimizelegibility;
 }
 
-// A single, visible focus ring for keyboard users across the whole site.
 :focus-visible {
   outline: rem(2px) solid $color-accent;
   outline-offset: rem(2px);
   border-radius: rem(2px);
 }
 
-// Anchor jumps from the sticky nav land below the header, not under it.
 :target {
   scroll-margin-top: $space-4xl;
 }
 
 .container {
-  // min() caps the width yet still guarantees a gutter on small screens.
   width: min(100% - #{$space-lg * 2}, #{$container-max});
   margin-inline: auto;
 }
@@ -45,8 +40,6 @@ body {
   @include visually-hidden;
 }
 
-// Honour users who ask the OS to reduce motion: kill animation, scrolling
-// behaviour and transitions everywhere in one place.
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

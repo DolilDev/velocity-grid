@@ -24,7 +24,6 @@
     transform: translateY(rem(1px));
   }
 
-  // Variants stay one line each thanks to the button-variant mixin.
   &--primary {
     @include button-variant($color-primary, #fff, $color-primary-dark);
   }
@@ -40,8 +39,6 @@
     }
   }
 
-  // Ghost is hand-written: it tweaks the border alongside the background on
-  // hover, which the colour-only mixin does not cover.
   &--ghost {
     color: $color-text;
     background-color: transparent;

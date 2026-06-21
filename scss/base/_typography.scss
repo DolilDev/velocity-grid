@@ -1,7 +1,5 @@
 @use '../abstracts' as *;
 
-// Headings share one display family and a tight leading. Sizes use clamp() so
-// they scale fluidly between mobile and desktop without a wall of breakpoints.
 h1,
 h2,
 h3,
@@ -58,20 +56,17 @@ strong {
   font-weight: $font-weight-semibold;
 }
 
-// Small print: footnotes, the footer disclaimer, table captions.
 small {
   font-size: rem(14px);
   color: $color-text-muted;
 }
 
-// Reusable lead paragraph for section intros.
 .lead {
   max-width: $content-max;
   font-size: clamp(rem(17px), 2.5vw, rem(20px));
   color: $color-text-muted;
 }
 
-// Eyebrow / kicker label that sits above headings.
 .eyebrow {
   display: inline-block;
   font-family: $font-display;

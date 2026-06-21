@@ -5,10 +5,9 @@
   display: flex;
   align-items: center;
   min-height: 100vh;
-  min-height: 100svh; // accounts for mobile browser chrome where supported
+  min-height: 100svh;
   padding-block: $space-4xl;
   overflow: hidden;
-  // Layered brand glows over the base background.
   background:
     radial-gradient(60% 80% at 80% 8%, rgb(225 6 0 / 18%), transparent 60%),
     radial-gradient(55% 60% at 8% 92%, rgb(0 194 214 / 14%), transparent 60%), $color-bg;
@@ -21,7 +20,6 @@
   pointer-events: none;
 }
 
-// Streaks that sweep across the hero to suggest speed.
 .hero__speedline {
   position: absolute;
   height: rem(2px);

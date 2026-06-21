@@ -11,7 +11,6 @@
     border-color $transition-base,
     box-shadow $transition-base;
 
-  // Toggled by js/nav.js once the page is scrolled past a threshold.
   &.is-scrolled {
     background-color: rgb(11 11 18 / 85%);
     border-bottom-color: $color-border;

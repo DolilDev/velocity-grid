@@ -16,7 +16,6 @@
   margin-bottom: $space-2xl;
 }
 
-// Responsive card grid: 1 → 2 → 3 columns via the respond() mixin.
 .car-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -31,7 +30,6 @@
   }
 }
 
-// Cards removed by the filter are hidden outright so the grid reflows.
 .car-grid > [hidden] {
   display: none;
 }

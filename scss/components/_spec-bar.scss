@@ -38,9 +38,6 @@
   transition: width $transition-slow;
 }
 
-// The fill only expands once an ancestor is flagged visible (by the
-// Intersection Observer for cards, or directly for the comparison modal).
-// --value is a 0–100 number set inline per bar; calc turns it into a width.
 .is-visible .spec-bar__fill {
   width: calc(var(--value, 0) * 1%);
 }

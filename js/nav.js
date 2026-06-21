@@ -3,6 +3,22 @@
 
 const SCROLL_THRESHOLD = 24; // px
 
+// Scroll the page back to the very top from the logo. A plain `#top` anchor
+// can't do this: #top sits on the sticky header, which is permanently pinned to
+// the viewport top, so the browser thinks it's already in view and won't scroll.
+// We scroll to 0 explicitly; the href stays as a no-JS fallback.
+export const initScrollToTop = (triggerEl) => {
+  if (!triggerEl) {
+    return;
+  }
+
+  triggerEl.addEventListener('click', (event) => {
+    event.preventDefault();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+};
+
 export const initStickyNav = (headerEl) => {
   if (!headerEl) {
     return;

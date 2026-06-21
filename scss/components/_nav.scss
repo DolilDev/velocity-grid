@@ -49,11 +49,13 @@
   transition: color $transition-fast;
 
   &:hover,
-  &:focus-visible {
+  &:focus-visible,
+  &.is-active {
     color: $color-text;
   }
 
-  // Underline that wipes in from the left on hover/focus.
+  // Underline that wipes in from the left on hover/focus, and stays put for the
+  // section currently in view (scrollspy sets .is-active).
   &::after {
     content: '';
     position: absolute;
@@ -67,7 +69,8 @@
   }
 
   &:hover::after,
-  &:focus-visible::after {
+  &:focus-visible::after,
+  &.is-active::after {
     transform: scaleX(1);
   }
 }

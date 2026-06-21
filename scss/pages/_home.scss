@@ -89,6 +89,7 @@
   }
 
   thead th {
+    padding: 0; // the sort button supplies the padding
     font-family: $font-display;
     font-size: rem(12px);
     letter-spacing: 0.05em;
@@ -109,6 +110,52 @@
   tbody tr:hover {
     background-color: rgb(255 255 255 / 3%);
   }
+}
+
+// Sortable column header. The button inherits the th's font/colour (set in the
+// reset), so it only needs layout here.
+.spec-table__sort {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  width: 100%;
+  padding: $space-sm $space-md;
+  text-align: left;
+  white-space: nowrap;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.spec-table__sort-icon {
+  font-size: rem(10px);
+  opacity: 0.4;
+
+  // Neutral "sortable" hint until this column becomes the active sort.
+  &::before {
+    content: '⇅';
+  }
+}
+
+// Active sort column: highlight + a direction arrow driven entirely by aria-sort.
+.spec-table thead th[aria-sort='ascending'],
+.spec-table thead th[aria-sort='descending'] {
+  color: $color-accent;
+}
+
+.spec-table thead th[aria-sort='ascending'] .spec-table__sort-icon,
+.spec-table thead th[aria-sort='descending'] .spec-table__sort-icon {
+  opacity: 1;
+}
+
+.spec-table thead th[aria-sort='ascending'] .spec-table__sort-icon::before {
+  content: '▲';
+}
+
+.spec-table thead th[aria-sort='descending'] .spec-table__sort-icon::before {
+  content: '▼';
 }
 
 // --- Comparison view (rendered into the modal) -------------------------------

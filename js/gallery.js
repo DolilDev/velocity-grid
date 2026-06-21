@@ -1,6 +1,6 @@
-// Renders the card gallery and the technical-data table from the car dataset.
-// Markup-building only — interactions (filtering, spec bars, comparison) live in
-// their own modules.
+// Renders the card gallery from the car dataset. Markup-building only —
+// interactions (filtering, spec bars, comparison) live in their own modules,
+// and the technical-data table has its own module (specTable.js).
 
 import { cars, CATEGORIES } from './data.js';
 import { carArt } from './carArt.js';
@@ -14,8 +14,6 @@ const SPEC_BARS = [
 
 // Cars at or above this top speed earn the "Top speed" badge.
 const TOP_SPEED_BADGE_THRESHOLD = 375; // km/h
-
-const SPEC_COLUMNS = ['Bolid', 'Zespół', 'Kategoria', 'Silnik', 'Moc', 'Masa', 'V-max', '0–100'];
 
 const specBarMarkup = ({ label }, value) => `
   <div class="spec-bar">
@@ -69,28 +67,6 @@ const cardMarkup = (car) => {
     </li>`;
 };
 
-const rowMarkup = ({ name, team, category, specs }) => `
-  <tr>
-    <th scope="row">${name}</th>
-    <td>${team}</td>
-    <td>${CATEGORIES[category].label}</td>
-    <td>${specs.engine}</td>
-    <td>${specs.power} KM</td>
-    <td>${specs.weight} kg</td>
-    <td>${specs.topSpeed} km/h</td>
-    <td>${specs.zeroToHundred} s</td>
-  </tr>`;
-
 export const renderGallery = (gridEl) => {
   gridEl.innerHTML = cars.map(cardMarkup).join('');
-};
-
-export const renderSpecTable = (tableEl) => {
-  const head = SPEC_COLUMNS.map((label) => `<th scope="col">${label}</th>`).join('');
-  tableEl.innerHTML = `
-    <caption class="visually-hidden">Dane techniczne bolidów APEX Racing Series</caption>
-    <thead>
-      <tr>${head}</tr>
-    </thead>
-    <tbody>${cars.map(rowMarkup).join('')}</tbody>`;
 };

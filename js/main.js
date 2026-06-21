@@ -1,8 +1,9 @@
 // Entry point: wires the feature modules to the DOM. Each module owns one
 // concern; main.js only finds the mount points and hands them over.
 
-import { renderGallery, renderSpecTable } from './gallery.js';
-import { initStickyNav } from './nav.js';
+import { renderGallery } from './gallery.js';
+import { renderSpecTable } from './specTable.js';
+import { initStickyNav, initScrollSpy } from './nav.js';
 import { initSpecBars } from './specBars.js';
 import { initFilter } from './filter.js';
 import { initCompare } from './compare.js';
@@ -10,10 +11,12 @@ import { initCompare } from './compare.js';
 const carGrid = document.querySelector('[data-car-grid]');
 const specTable = document.querySelector('[data-spec-table]');
 const siteHeader = document.querySelector('[data-site-header]');
+const navLinks = document.querySelectorAll('.nav__link');
 const filterButtons = document.querySelectorAll('[data-filter]');
 const resultStatus = document.querySelector('[data-result-count]');
 
 initStickyNav(siteHeader);
+initScrollSpy(navLinks);
 
 if (specTable) {
   renderSpecTable(specTable);

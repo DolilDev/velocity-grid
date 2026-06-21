@@ -17,14 +17,16 @@ pixel‑perfect detail** — no frameworks, no bundler, zero runtime dependencie
 ## Features
 
 - **Full‑screen hero** with a dark theme, brand gradient and subtle CSS speed‑streak animation.
-- **Sticky navigation** that fades in a background once the page is scrolled (JS scroll state).
+- **Sticky navigation** that fades in a background once scrolled, with a scrollspy that
+  highlights the tab of the section currently in view (`aria-current`).
 - **Car gallery** (CSS Grid) of six cars, each with a generated SVG silhouette, category badges
   and three **animated spec bars** that fill when the card enters the viewport.
 - **Category filtering** (all / prototype / classic / concept) with animated show/hide and a
   screen‑reader result announcement.
 - **Comparison tool** — tick two cars and compare their stats side by side in an accessible
   modal dialog (focus trap, `Esc` to close, focus restoration).
-- **Responsive technical‑data table** of every car's specs.
+- **Sortable, responsive technical‑data table** — click any column header to sort (with
+  `aria-sort` exposed to assistive tech).
 - **Mobile‑first & accessible:** keyboard navigable, visible focus rings, `prefers-reduced-motion`
   respected, semantic landmarks and a correct heading hierarchy.
 
@@ -49,7 +51,8 @@ pixel‑perfect detail** — no frameworks, no bundler, zero runtime dependencie
 ├── js/
 │   ├── data.js             # The single source of truth: car dataset + category labels
 │   ├── carArt.js           # Pure function: car → inline SVG silhouette
-│   ├── gallery.js          # Renders the cards and the spec table from data.js
+│   ├── gallery.js          # Renders the cards from data.js
+│   ├── specTable.js        # Renders the sortable technical‑data table
 │   ├── nav.js              # Sticky‑nav scroll state
 │   ├── specBars.js         # IntersectionObserver that fills the spec bars
 │   ├── filter.js           # Category filtering + animated transitions
@@ -151,11 +154,13 @@ dependency‑free and fast, and make the DOM/IntersectionObserver work explicit 
 `@use`/`@forward` give real module scoping, so nothing leaks globally and the styles scale without
 specificity wars.
 
-**IntersectionObserver instead of scroll listeners.** A scroll handler would run
-`getBoundingClientRect` math on every scroll event and risk layout thrash. One shared observer
-fires only when a card's visibility actually changes, fills its bars **once**, then `unobserve`s
-it. (The nav's scroll state is the one place a scroll listener fits — and it's throttled with
-`requestAnimationFrame`.)
+**IntersectionObserver for one‑shot reveals; a throttled scroll handler for the nav.** Filling
+the spec bars is a "fire once when visible" job, so a single shared observer is ideal — it reacts
+only when a card's visibility changes, fills the bars **once**, then `unobserve`s it (no
+`getBoundingClientRect` on every scroll event). The nav behaviours are position‑relative instead:
+the sticky background and the scrollspy both need to compare scroll position to a line — and the
+scrollspy must still flag the last section when a short footer can't reach a mid‑viewport band —
+so they use one `requestAnimationFrame`‑throttled scroll handler each. Right tool per job.
 
 ## Development
 

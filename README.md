@@ -8,7 +8,7 @@ pixel‑perfect detail** — no frameworks, no bundler, zero runtime dependencie
 > are made up for this portfolio project. There are no real brands, logos, drivers or photos —
 > each car is drawn from code as an inline SVG built from two brand colours.
 
-🔗 **Live demo:** _https://dolildev.github.io/velocity-grid/ (placeholder)_
+🔗 **Live demo:** <https://dolildev.github.io/velocity-grid/>
 
 ![Hero section](assets/screenshot-hero.png)
 ![Car gallery with animated spec bars](assets/screenshot-gallery.png)
